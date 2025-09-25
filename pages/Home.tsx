@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 // FIX: Switched to named imports for react-router-dom to fix module resolution errors.
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import { GraduationCap, Cpu, Users, ArrowRight } from 'lucide-react';
+import { GraduationCap, Cpu, Users, ArrowRight, Star, Quote } from 'lucide-react';
+import { TESTIMONIALS_DATA } from '../constants';
 
 interface HomeProps {
   onBookNowClick: () => void;
@@ -114,6 +115,82 @@ const Home: React.FC<HomeProps> = ({ onBookNowClick }) => {
                   <Button variant="outline">Our Story</Button>
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-sm font-bold uppercase text-primary tracking-widest">What People Say</h2>
+            <p className="text-3xl md:text-4xl font-bold mt-2 mb-4">Stories of Transformation</p>
+            <p className="text-lg text-muted max-w-2xl mx-auto">
+              Hear from students, parents, and community leaders about how JALA Educators is making a difference.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {TESTIMONIALS_DATA.slice(0, 3).map((testimonial) => (
+              <div 
+                key={testimonial.id} 
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 relative"
+              >
+                <Quote className="text-primary/20 w-12 h-12 absolute top-4 right-6" />
+                
+                <div className="flex items-center mb-6">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full object-cover border-4 border-primary/10"
+                  />
+                  <div className="ml-4">
+                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                    <p className="text-primary font-semibold">{testimonial.role}</p>
+                    {testimonial.organization && (
+                      <p className="text-sm text-muted">{testimonial.organization}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+
+                <p className="text-muted italic leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">500+</div>
+                <div className="text-muted">Students Impacted</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-muted">Programs Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">25+</div>
+                <div className="text-muted">Community Partners</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">98%</div>
+                <div className="text-muted">Success Rate</div>
+              </div>
+            </div>
+            
+            <Link to="/about">
+              <Button variant="outline" size="md">
+                Read More Stories <ArrowRight className="inline ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

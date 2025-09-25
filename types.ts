@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 
 export interface NavLink {
@@ -19,4 +17,14 @@ export interface Program {
   title: string;
   description: string;
   items: string[];
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  organization?: string;
+  image: string;
+  quote: string;
+  rating: number;
 }

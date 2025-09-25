@@ -103,7 +103,7 @@ const GetInvolved: React.FC = () => {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <img src="https://images.unsplash.com/photo-1593113630424-d8847a26acb6?q=80&w=2070&auto-format&fit=crop" alt="Volunteers working with community" className="rounded-xl shadow-2xl object-cover w-full" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5qkUlRU3_FQGAPV_clMl7Ky2HWoz8rkZQhw&s" alt="Volunteers working with community" className="rounded-xl shadow-2xl object-cover w-full" />
           </div>
         </div>
       </section>
