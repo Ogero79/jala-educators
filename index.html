@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JALA Educators | Transforming Minds, Shaping Destinies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      html { scroll-behavior: smooth; }
+      body {
+        background-color: #FFFFFF; /* Match new background color */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* Keep animations for now, will refine in tailwind config */
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'background': '#FFFFFF',
+              'foreground': '#111827',      // Near-black for strong contrast
+              'primary': '#16A34A',         // Vibrant Green-600
+              'primary-foreground': '#FFFFFF',
+              'secondary': '#F59E0B',        // Vibrant Amber-500
+              'secondary-foreground': '#111827',
+              'muted': '#64748B',           // Slate-500 for readable muted text
+              'muted-foreground': '#94A3B8', // Slate-400 for lighter muted text
+              'border': '#E2E8F0',           // Slate-200
+              'card': '#FFFFFF',
+              'subtle': '#F8FAFC',          // Slate-50 for subtle section backgrounds
+            },
+            keyframes: {
+              'fadeInUp': {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'fadeIn': {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              'kenburns': { // Make kenburns more subtle
+                '0%': { transform: 'scale(1) translate(0, 0)', transformOrigin: 'center' },
+                '100%': { transform: 'scale(1.05) translate(-1%, 1%)', transformOrigin: 'center' },
+              },
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+              'fade-in': 'fadeIn 0.6s ease-out forwards',
+              'kenburns': 'kenburns 30s ease-out forwards',
+            }
+          },
+        },
+      }
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "react/": "https://aistudiocdn.com/react@^19.1.1/",
+          "react": "https://aistudiocdn.com/react@^19.1.1",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+          "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.1",
+          "lucide-react": "https://esm.sh/lucide-react"
+        }
+      }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
