@@ -129,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ onBookNowClick }) => {
               </h4>
               <div className="flex justify-center space-x-6">
                 <a
-                  href="https://facebook.com/jalaeducators"
+                  href="https://www.facebook.com/profile.php?id=100064536530727"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({ onBookNowClick }) => {
                   <FaFacebookF size={20} color="rgb(22 163 74)" />
                 </a>
                 <a
-                  href="https://instagram.com/jalaeducators"
+                  href="https://www.instagram.com/jalaeducators?utm_source=qr&igsh=YXBoMmw5aXRqMDQ1s"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
@@ -145,7 +145,7 @@ const Header: React.FC<HeaderProps> = ({ onBookNowClick }) => {
                   <FaInstagram size={20} color="rgb(22 163 74)" />
                 </a>
                 <a
-                  href="https://linkedin.com/company/jalaeducators"
+                  href="https://www.linkedin.com/in/joseph-mutinda-461303217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_apps"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"
@@ -153,7 +153,7 @@ const Header: React.FC<HeaderProps> = ({ onBookNowClick }) => {
                   <FaLinkedinIn size={20} color="rgb(22 163 74)" />
                 </a>
                 <a
-                  href="https://tiktok.com/@jalaeducators"
+                  href="https://www.tiktok.com/@jala.educators?_t=ZM-901JtQa9oPz&_r=1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-300"

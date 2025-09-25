@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                 Facebook
               </a>
               <a
-                href="https://www.instagram.com/jalaeducators"
+                href="https://www.instagram.com/jalaeducators?utm_source=qr&igsh=YXBoMmw5aXRqMDQ1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-slate-400 hover:text-white transition-colors duration-300"
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
                 Instagram
               </a>
               <a
-                href="https://www.linkedin.com/company/jalaeducators"
+                href="https://www.linkedin.com/in/joseph-mutinda-461303217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-slate-400 hover:text-white transition-colors duration-300"
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
                 LinkedIn
               </a>
               <a
-                href="https://www.tiktok.com/@jala.educators"
+                href="https://www.tiktok.com/@jala.educators?_t=ZM-901JtQa9oPz&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-slate-400 hover:text-white transition-colors duration-300"
