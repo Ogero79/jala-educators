@@ -17,6 +17,16 @@
         -moz-osx-font-smoothing: grayscale;
         --secondary: #F59E0B; /* Vibrant Amber-500 */
       }
+      
+      /* Hide scrollbar for mobile navigation */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      
       /* Keep animations for now, will refine in tailwind config */
     </style>
     <script>

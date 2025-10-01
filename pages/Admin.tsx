@@ -226,14 +226,12 @@ const AdminDashboard: React.FC = () => {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
-          <div className="text-center mb-8">
-            <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
-            <h1 className="text-3xl font-bold text-foreground mb-2">Admin Access</h1>
-            <p className="text-muted">Enter your admin credentials to continue</p>
-          </div>
-
-          <form onSubmit={handleLogin} className="space-y-6">
+      <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-8 w-full max-w-md mx-4">
+        <div className="text-center mb-6 sm:mb-8">
+          <Shield className="w-12 h-12 sm:w-16 sm:h-16 text-primary mx-auto mb-3 sm:mb-4" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Admin Access</h1>
+          <p className="text-sm sm:text-base text-muted">Enter your admin credentials to continue</p>
+        </div>          <form onSubmit={handleLogin} className="space-y-6">
             {authError && (
               <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
                 {authError}
@@ -296,17 +294,20 @@ const AdminDashboard: React.FC = () => {
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center">
-              <BarChart3 className="w-8 h-8 text-primary mr-3" />
-              <h1 className="text-2xl font-bold text-foreground">JALA Admin Dashboard</h1>
+          <div className="flex justify-between items-center py-4 sm:py-6">
+            <div className="flex items-center min-w-0">
+              <BarChart3 className="w-6 h-6 sm:w-8 sm:h-8 text-primary mr-2 sm:mr-3 flex-shrink-0" />
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground truncate">
+                <span className="hidden sm:inline">JALA Admin Dashboard</span>
+                <span className="sm:hidden">Admin</span>
+              </h1>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+              className="flex items-center px-3 py-2 sm:px-4 text-red-600 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
             >
-              <LogOut className="w-5 h-5 mr-2" />
-              Logout
+              <LogOut className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </div>
@@ -315,51 +316,51 @@ const AdminDashboard: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Statistics Cards */}
         {stats && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-border">
               <div className="flex items-center">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Mail className="w-6 h-6 text-primary" />
+                <div className="p-2 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-muted">Newsletter Subscriptions</p>
-                  <p className="text-2xl font-bold text-foreground">{stats.totalSubscriptions}</p>
+                <div className="ml-3 sm:ml-4 min-w-0">
+                  <p className="text-xs sm:text-sm font-medium text-muted truncate">Newsletter Subscriptions</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.totalSubscriptions}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-border">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-border">
               <div className="flex items-center">
-                <div className="p-3 bg-secondary/10 rounded-lg">
-                  <BookOpen className="w-6 h-6 text-secondary" />
+                <div className="p-2 sm:p-3 bg-secondary/10 rounded-lg flex-shrink-0">
+                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-muted">Program Bookings</p>
-                  <p className="text-2xl font-bold text-foreground">{stats.totalBookings}</p>
+                <div className="ml-3 sm:ml-4 min-w-0">
+                  <p className="text-xs sm:text-sm font-medium text-muted truncate">Program Bookings</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.totalBookings}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-border">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-border">
               <div className="flex items-center">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <MessageSquare className="w-6 h-6 text-primary" />
+                <div className="p-2 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                  <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-muted">Feedback Received</p>
-                  <p className="text-2xl font-bold text-foreground">{stats.totalFeedback}</p>
+                <div className="ml-3 sm:ml-4 min-w-0">
+                  <p className="text-xs sm:text-sm font-medium text-muted truncate">Feedback Received</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.totalFeedback}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-border">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-border">
               <div className="flex items-center">
-                <div className="p-3 bg-secondary/10 rounded-lg">
-                  <Star className="w-6 h-6 text-secondary" />
+                <div className="p-2 sm:p-3 bg-secondary/10 rounded-lg flex-shrink-0">
+                  <Star className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-muted">Average Rating</p>
-                  <p className="text-2xl font-bold text-foreground">{stats.averageRating.toFixed(1)}</p>
+                <div className="ml-3 sm:ml-4 min-w-0">
+                  <p className="text-xs sm:text-sm font-medium text-muted truncate">Average Rating</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.averageRating.toFixed(1)}</p>
                 </div>
               </div>
             </div>
@@ -367,9 +368,9 @@ const AdminDashboard: React.FC = () => {
         )}
 
         {/* Navigation Tabs */}
-        <div className="bg-white rounded-xl shadow-sm border border-border mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-border mb-6 sm:mb-8">
           <div className="border-b border-border">
-            <nav className="flex space-x-8 px-6">
+            <nav className="flex space-x-4 sm:space-x-8 px-4 sm:px-6 overflow-x-auto scrollbar-hide">
               {[
                 { id: 'overview', label: 'Overview', icon: BarChart3 },
                 { id: 'subscriptions', label: 'Subscriptions', icon: Mail },
@@ -386,14 +387,15 @@ const AdminDashboard: React.FC = () => {
                       else if (tab.id === 'bookings') loadBookings();
                       else if (tab.id === 'feedback') loadFeedback();
                     }}
-                    className={`flex items-center py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
+                    className={`flex items-center py-3 sm:py-4 px-2 sm:px-3 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap ${
                       activeTab === tab.id
                         ? 'border-primary text-primary'
                         : 'border-transparent text-muted hover:text-foreground hover:border-gray-300'
                     }`}
                   >
-                    <Icon className="w-5 h-5 mr-2" />
-                    {tab.label}
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
                   </button>
                 );
               })}
@@ -401,17 +403,26 @@ const AdminDashboard: React.FC = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {activeTab === 'overview' && stats && (
-              <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-foreground">Recent Activity</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="space-y-4 sm:space-y-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-foreground">Recent Activity</h2>
+                <div className="grid grid-cols-1 gap-4 sm:gap-6">
                   <div className="bg-subtle rounded-lg p-4">
-                    <h3 className="font-medium text-foreground mb-2">Last 7 Days</h3>
-                    <div className="space-y-2 text-sm">
-                      <p><span className="font-medium">{stats.recentActivity.subscriptions}</span> new subscriptions</p>
-                      <p><span className="font-medium">{stats.recentActivity.bookings}</span> new bookings</p>
-                      <p><span className="font-medium">{stats.recentActivity.feedback}</span> feedback received</p>
+                    <h3 className="font-medium text-foreground mb-3">Last 7 Days</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                      <div className="text-center sm:text-left">
+                        <p className="text-lg sm:text-xl font-bold text-primary">{stats.recentActivity.subscriptions}</p>
+                        <p className="text-xs sm:text-sm text-muted">new subscriptions</p>
+                      </div>
+                      <div className="text-center sm:text-left">
+                        <p className="text-lg sm:text-xl font-bold text-secondary">{stats.recentActivity.bookings}</p>
+                        <p className="text-xs sm:text-sm text-muted">new bookings</p>
+                      </div>
+                      <div className="text-center sm:text-left">
+                        <p className="text-lg sm:text-xl font-bold text-primary">{stats.recentActivity.feedback}</p>
+                        <p className="text-xs sm:text-sm text-muted">feedback received</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -435,36 +446,43 @@ const AdminDashboard: React.FC = () => {
                     <p className="text-muted">No newsletter subscriptions yet.</p>
                   </div>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-border">
-                      <thead className="bg-subtle">
-                        <tr>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Email</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Subscribed Date</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-border">
-                        {subscriptions.map((subscription) => (
-                          <tr key={subscription.id} className="hover:bg-subtle">
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
-                              {subscription.email_address}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-muted">
-                              {formatDate(subscription.created_at)}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                              <button
-                                onClick={() => deleteItem('subscriptions', subscription.id)}
-                                className="text-red-600 hover:text-red-800 transition-colors"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </button>
-                            </td>
+                  <div className="overflow-x-auto -mx-4 sm:mx-0">
+                    <div className="inline-block min-w-full align-middle">
+                      <table className="min-w-full divide-y divide-border">
+                        <thead className="bg-subtle">
+                          <tr>
+                            <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Email</th>
+                            <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-muted uppercase tracking-wider hidden sm:table-cell">Date</th>
+                            <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Actions</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-border">
+                          {subscriptions.map((subscription) => (
+                            <tr key={subscription.id} className="hover:bg-subtle">
+                              <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-foreground">
+                                <div className="truncate max-w-[200px] sm:max-w-none" title={subscription.email_address}>
+                                  {subscription.email_address}
+                                </div>
+                                <div className="sm:hidden text-xs text-muted mt-1">
+                                  {formatDate(subscription.created_at)}
+                                </div>
+                              </td>
+                              <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-muted hidden sm:table-cell">
+                                {formatDate(subscription.created_at)}
+                              </td>
+                              <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-sm">
+                                <button
+                                  onClick={() => deleteItem('subscriptions', subscription.id)}
+                                  className="text-red-600 hover:text-red-800 transition-colors p-1"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
               </div>
@@ -487,54 +505,97 @@ const AdminDashboard: React.FC = () => {
                     <p className="text-muted">No program bookings yet.</p>
                   </div>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-border">
-                      <thead className="bg-subtle">
-                        <tr>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Parent</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Contact</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Student</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Grade</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Booking Date</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-border">
-                        {bookings.map((booking) => (
-                          <tr key={booking.id} className="hover:bg-subtle">
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm font-medium text-foreground">{booking.parent_name}</div>
+                  <div className="space-y-4 sm:space-y-0">
+                    {/* Mobile Card Layout */}
+                    <div className="sm:hidden space-y-4">
+                      {bookings.map((booking) => (
+                        <div key={booking.id} className="bg-white border border-border rounded-lg p-4 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-medium text-foreground truncate">{booking.parent_name}</h3>
                               {booking.parent_email && (
-                                <div className="text-sm text-muted">{booking.parent_email}</div>
+                                <p className="text-xs text-muted truncate">{booking.parent_email}</p>
                               )}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
-                              <div className="flex items-center">
-                                <Phone className="w-4 h-4 mr-2 text-muted" />
-                                {booking.parent_phone}
-                              </div>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
-                              {booking.student_name}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
-                              {booking.student_grade}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-muted">
-                              {formatDate(booking.created_at)}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                              <button
-                                onClick={() => deleteItem('bookings', booking.id)}
-                                className="text-red-600 hover:text-red-800 transition-colors"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </button>
-                            </td>
+                            </div>
+                            <button
+                              onClick={() => deleteItem('bookings', booking.id)}
+                              className="text-red-600 hover:text-red-800 transition-colors p-1 ml-2"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                          <div className="grid grid-cols-2 gap-3 text-xs">
+                            <div>
+                              <p className="text-muted font-medium">Phone</p>
+                              <p className="text-foreground">{booking.parent_phone}</p>
+                            </div>
+                            <div>
+                              <p className="text-muted font-medium">Student</p>
+                              <p className="text-foreground">{booking.student_name}</p>
+                            </div>
+                            <div>
+                              <p className="text-muted font-medium">Grade</p>
+                              <p className="text-foreground">{booking.student_grade}</p>
+                            </div>
+                            <div>
+                              <p className="text-muted font-medium">Date</p>
+                              <p className="text-foreground">{formatDate(booking.created_at)}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Desktop Table Layout */}
+                    <div className="hidden sm:block overflow-x-auto">
+                      <table className="min-w-full divide-y divide-border">
+                        <thead className="bg-subtle">
+                          <tr>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Parent</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Contact</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Student</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Grade</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Date</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted uppercase tracking-wider">Actions</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-border">
+                          {bookings.map((booking) => (
+                            <tr key={booking.id} className="hover:bg-subtle">
+                              <td className="px-6 py-4">
+                                <div className="text-sm font-medium text-foreground">{booking.parent_name}</div>
+                                {booking.parent_email && (
+                                  <div className="text-sm text-muted truncate max-w-[200px]">{booking.parent_email}</div>
+                                )}
+                              </td>
+                              <td className="px-6 py-4 text-sm text-foreground">
+                                <div className="flex items-center">
+                                  <Phone className="w-4 h-4 mr-2 text-muted" />
+                                  {booking.parent_phone}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 text-sm text-foreground">
+                                {booking.student_name}
+                              </td>
+                              <td className="px-6 py-4 text-sm text-foreground">
+                                {booking.student_grade}
+                              </td>
+                              <td className="px-6 py-4 text-sm text-muted">
+                                {formatDate(booking.created_at)}
+                              </td>
+                              <td className="px-6 py-4">
+                                <button
+                                  onClick={() => deleteItem('bookings', booking.id)}
+                                  className="text-red-600 hover:text-red-800 transition-colors p-1"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
               </div>
@@ -559,24 +620,26 @@ const AdminDashboard: React.FC = () => {
                 ) : (
                   <div className="space-y-4">
                     {feedback.map((item) => (
-                      <div key={item.id} className="bg-white border border-border rounded-lg p-6">
-                        <div className="flex justify-between items-start mb-4">
-                          <div>
-                            <h3 className="font-medium text-foreground">{item.name}</h3>
+                      <div key={item.id} className="bg-white border border-border rounded-lg p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-3 sm:space-y-0">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-medium text-foreground truncate">{item.name}</h3>
                             <p className="text-sm text-muted capitalize">{item.role}</p>
                             <p className="text-xs text-muted mt-1">{formatDate(item.submitted_at)}</p>
                           </div>
-                          <div className="flex items-center space-x-4">
-                            {renderStars(item.rating)}
+                          <div className="flex items-center justify-between sm:justify-end sm:space-x-4">
+                            <div className="flex-1 sm:flex-none">
+                              {renderStars(item.rating)}
+                            </div>
                             <button
                               onClick={() => deleteItem('feedback', item.id)}
-                              className="text-red-600 hover:text-red-800 transition-colors"
+                              className="text-red-600 hover:text-red-800 transition-colors p-1 ml-2"
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
-                        <p className="text-sm text-foreground leading-relaxed">{item.comment}</p>
+                        <p className="text-sm text-foreground leading-relaxed break-words">{item.comment}</p>
                       </div>
                     ))}
                   </div>
