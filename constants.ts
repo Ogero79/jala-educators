@@ -3,7 +3,7 @@ import type { NavLink, Value, Program, Testimonial } from './types';
 import { Lightbulb, ShieldCheck, Users, HeartHandshake, Leaf } from 'lucide-react';
 
 // API Configuration
-export const API_BASE_URL = 'https://4db1de9b3b3a.ngrok-free.app';
+export const API_BASE_URL = 'https://jala-backend.onrender.com';
 
 export const NAVIGATION_LINKS: NavLink[] = [
   { label: 'Home', path: '/' },
