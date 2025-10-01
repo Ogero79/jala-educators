@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 // FIX: Switched to named imports for react-router-dom to fix module resolution errors.
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Programs from './pages/Programs';
 import GetInvolved from './pages/GetInvolved';
+import Admin from './pages/Admin';
 import BookingModal from './components/BookingModal';
 
 const useScrollToTop = () => {
@@ -21,9 +22,19 @@ const useScrollToTop = () => {
 const AppContent: React.FC = () => {
   useScrollToTop();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  // Admin page doesn't need header/footer
+  if (location.pathname === '/admin') {
+    return (
+      <Routes>
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    );
+  }
 
   return (
     <div className="bg-background text-foreground font-sans">
@@ -44,9 +55,9 @@ const AppContent: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppContent />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

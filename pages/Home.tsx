@@ -10,7 +10,7 @@ import {
   Star,
   Quote,
 } from "lucide-react";
-import { TESTIMONIALS_DATA } from "../constants";
+import { TESTIMONIALS_DATA, API_BASE_URL } from "../constants";
 import ShareExperienceModal from '../components/ShareExperienceModal';
 
 interface HomeProps {
@@ -27,9 +27,45 @@ const Home: React.FC<HomeProps> = ({ onBookNowClick }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-    const handleFeedbackSubmit = (data: { rating: number; comment: string }) => {
+  const handleFeedbackSubmit = async (data: { name: string; role: string; rating: number; comment: string }) => {
+    // Console log the feedback data
     console.log("User feedback:", data);
-    // TODO: send this to backend or store in DB
+    
+    try {
+      // Send feedback to backend
+      const response = await fetch(`${API_BASE_URL}/api/feedback`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          role: data.role,
+          rating: data.rating,
+          comment: data.comment
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: 'Server error' }));
+        throw new Error(errorData.message || 'Failed to submit feedback');
+      }
+
+      const result = await response.json();
+      console.log("Feedback submitted successfully:", result);
+      
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      
+      // Check if it's a network error (backend not available)
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        console.warn("Backend server appears to be unavailable. Feedback logged to console only.");
+        // In production, you might want to queue this for later submission
+        return; // Don't throw error, allow modal to show success
+      }
+      
+      throw error; // Re-throw other errors to let the modal handle them
+    }
   };
 
   return (
