@@ -2,7 +2,7 @@ import React from 'react';
 import type { NavLink, Value, Program, Testimonial } from './types';
 import { Lightbulb, ShieldCheck, Users, HeartHandshake, Leaf } from 'lucide-react';
 
-// API Configuration
+// API Configuration - Environment-based URL
 export const API_BASE_URL = 'https://jala-backend.onrender.com';
 
 export const NAVIGATION_LINKS: NavLink[] = [
