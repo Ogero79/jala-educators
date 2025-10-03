@@ -1,7 +1,6 @@
 
 
 import React, { useState, useEffect } from 'react';
-// FIX: Switched to named imports for react-router-dom to fix module resolution errors.
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -27,7 +26,6 @@ const AppContent: React.FC = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Admin page doesn't need header/footer
   if (location.pathname === '/admin') {
     return (
       <Routes>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// FIX: Switched to named imports for react-router-dom to fix module resolution errors.
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import {
@@ -28,23 +27,14 @@ const Home: React.FC<HomeProps> = ({ onBookNowClick }) => {
   }, []);
 
   const handleFeedbackSubmit = async (data: { name: string; role: string; rating: number; comment: string }) => {
-    // Console log the feedback data
-    console.log("User feedback:", data);
-    
     try {
-      // Send feedback to backend
       const response = await fetch(`${API_BASE_URL}/api/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          name: data.name,
-          role: data.role,
-          rating: data.rating,
-          comment: data.comment
-        }),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
@@ -53,28 +43,19 @@ const Home: React.FC<HomeProps> = ({ onBookNowClick }) => {
           const errorData = await response.json();
           errorMessage = errorData.message || errorMessage;
         } catch (jsonError) {
-          console.error('Error parsing error response:', jsonError);
           errorMessage = `Server error (${response.status})`;
         }
         throw new Error(errorMessage);
       }
 
       const result = await response.json();
-      console.log("Feedback submitted successfully:", result);
-      
-      // Return success to indicate the submission was successful
       return { success: true, message: result.message || 'Feedback submitted successfully!' };
       
     } catch (error) {
-      console.error("Error submitting feedback:", error);
-      
-      // Check if it's a network/CORS error
       if (error instanceof TypeError && (error.message.includes('fetch') || error.message.includes('NetworkError') || error.message.includes('CORS'))) {
-        console.warn("Network or CORS error detected. Backend may be unavailable or have CORS issues.");
         throw new Error("Unable to connect to the server. Please check your internet connection and try again.");
       }
       
-      // Re-throw the error with the actual error message
       throw new Error(error.message || 'An unexpected error occurred while submitting feedback');
     }
   };

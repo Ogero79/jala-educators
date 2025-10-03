@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// Import the Check icon from lucide-react
 import { X, Check } from 'lucide-react';
 import {  API_BASE_URL } from "../constants";
 
@@ -17,7 +16,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     studentGrade: '',
   });
   
-  // State management for submission status
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,7 +41,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (!isOpen) {
-        // Reset form state after closing animation
         setTimeout(() => {
           setIsSubmitted(false);
           setError(null);
@@ -66,7 +63,6 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
     if (name === 'parentPhone') {
-      // Allow only numeric input and limit to 10 digits
       const numericValue = value.replace(/[^0-9]/g, '');
       if (numericValue.length <= 10) {
         setFormData(prevState => ({ ...prevState, [name]: numericValue }));
@@ -75,7 +71,6 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setFormData(prevState => ({ ...prevState, [name]: value }));
     }
 
-    // Clear the error for the field once the user starts correcting it
     if (formErrors.parentPhone && name === 'parentPhone') {
       setFormErrors(prevState => ({ ...prevState, parentPhone: '' }));
     }
@@ -84,7 +79,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const validateForm = () => {
     let isValid = true;
     const errors = { parentPhone: '' };
-    const phoneRegex = /^0\d{9}$/; // Regex for a 10-digit number starting with 0
+    const phoneRegex = /^0\d{9}$/;
 
     if (!formData.parentPhone) {
       errors.parentPhone = 'Phone number is required.';
@@ -98,15 +93,12 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     return isValid;
   };
 
-  // --- CHANGE 1: CONFIGURED TO SEND DATA TO A SERVER ---
-  // The handleSubmit function is now async to handle the API call.
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      // Replace '/api/bookings' with your actual server endpoint
       const response = await fetch(`${API_BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: {
@@ -116,20 +108,14 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       });
 
       if (!response.ok) {
-        // Handle server errors (e.g., 400, 500)
         throw new Error('Something went wrong. Please try again.');
       }
 
-      // If submission is successful:
-      console.log('Booking submitted successfully:', formData);
       setIsSubmitted(true);
 
     } catch (err: any) {
-      // Handle network errors or the error thrown above
-      console.error('Submission failed:', err);
       setError(err.message || 'Failed to submit booking. Please check your connection.');
     } finally {
-      // This will run regardless of success or failure
       setIsLoading(false);
     }
   };
@@ -155,7 +141,6 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         {isSubmitted ? (
           <div className="text-center py-10 animate-fade-in">
-            {/* --- CHANGE 2: REPLACED EMOJI WITH LUCIDE ICON --- */}
             <div className="mx-auto mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-green-100 text-green-600">
               <Check size={32} strokeWidth={3} />
             </div>
@@ -187,7 +172,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 <div className="space-y-4">
                   <input type="text" name="parentName" placeholder="Parent’s Name" value={formData.parentName} onChange={handleChange} className={inputClasses} required />
                     <input 
-                      type="tel" // Use type="tel" for phone numbers
+                      type="tel"
                       name="parentPhone" 
                       placeholder="Parent’s Phone (e.g., 0712345678)" 
                       value={formData.parentPhone} 
@@ -210,7 +195,6 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 </div>
               </div>
 
-              {/* Display error message if submission fails */}
               {error && (
                 <div className="text-center text-sm text-red-500 bg-red-500/10 p-3 rounded-md">
                   {error}
@@ -221,7 +205,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 <button 
                   type="submit" 
                   className="w-full bg-primary text-primary-foreground font-semibold py-3 px-4 rounded-lg hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
-                  disabled={isLoading} // Disable button while loading
+                  disabled={isLoading}
                 >
                   {isLoading ? 'Submitting...' : 'Submit Booking'}
                 </button>

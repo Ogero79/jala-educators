@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// --- CHANGE: Import the Check icon for the success message ---
 import { X, Star, Check, ChevronDown, User, Users, UserCheck } from "lucide-react";
 import Button from "./Button";
 
@@ -30,7 +29,6 @@ const ShareExperienceModal: React.FC<ShareExperienceModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
 
-  // --- CHANGE: Add state to show success message ---
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const modalRef = useRef<HTMLDivElement>(null);
@@ -48,7 +46,6 @@ const ShareExperienceModal: React.FC<ShareExperienceModalProps> = ({
     };
   }, [isOpen, onClose]);
 
-  // Reset form when the modal is closed
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
@@ -57,7 +54,7 @@ const ShareExperienceModal: React.FC<ShareExperienceModalProps> = ({
         setErrors({});
         setApiError(null);
         setIsLoading(false);
-        setIsSubmitted(false); // Reset submission state
+        setIsSubmitted(false);
       }, 300);
     }
   }, [isOpen]);
@@ -90,9 +87,8 @@ const ShareExperienceModal: React.FC<ShareExperienceModalProps> = ({
         rating, 
         comment: formData.comment 
       });
-      setIsSubmitted(true); // Show success message on success
+      setIsSubmitted(true);
     } catch (error) {
-      console.error("Submission failed:", error);
       setApiError("Failed to submit feedback. Please try again.");
     } finally {
       setIsLoading(false);
@@ -124,7 +120,6 @@ const ShareExperienceModal: React.FC<ShareExperienceModalProps> = ({
           <X className="w-6 h-6" />
         </button>
 
-        {/* --- CHANGE: Conditionally render form or success message --- */}
         {isSubmitted ? (
           <div className="text-center py-10 animate-fade-in">
             <div className="mx-auto mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-green-100 text-green-600">

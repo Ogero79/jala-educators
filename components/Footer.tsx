@@ -20,8 +20,7 @@ const Footer: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
 
-  // Email validation function
-  const validateEmail = (email: string): boolean => {
+      const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -31,13 +30,12 @@ const Footer: React.FC = () => {
     setError(null);
     setValidationError(null);
 
-    // Validate email before submission
     if (!email.trim()) {
       setValidationError("Email address is required.");
       return;
     }
 
-    if (!validateEmail(email)) {
+    if (!isValidEmail(email)) {
       setValidationError("Please enter a valid email address.");
       return;
     }
@@ -59,17 +57,10 @@ const Footer: React.FC = () => {
       }
 
       const result = await response.json();
-      console.log("Newsletter subscription successful:", result);
-      
       setSubscribed(true);
       setEmail("");
-
-      // Reset success message after 8 seconds
       setTimeout(() => setSubscribed(false), 8000);
     } catch (err: any) {
-      console.error("Newsletter subscription failed:", err);
-      
-      // Check if it's a network error (backend not available)
       if (err.message.includes('fetch') || err.name === 'TypeError') {
         setError("Unable to connect to server. Please try again later.");
       } else {

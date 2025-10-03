@@ -140,7 +140,6 @@ const AdminDashboard: React.FC = () => {
       const statsData = await apiRequest('/api/admin/stats');
       setStats(statsData.stats);
     } catch (error) {
-      console.error('Failed to load dashboard data:', error);
     }
   };
 
@@ -150,7 +149,6 @@ const AdminDashboard: React.FC = () => {
       const data = await apiRequest('/api/admin/subscriptions');
       setSubscriptions(data.data);
     } catch (error) {
-      console.error('Failed to load subscriptions:', error);
     } finally {
       setLoading(false);
     }
@@ -162,7 +160,7 @@ const AdminDashboard: React.FC = () => {
       const data = await apiRequest('/api/admin/bookings');
       setBookings(data.data);
     } catch (error) {
-      console.error('Failed to load bookings:', error);
+
     } finally {
       setLoading(false);
     }
@@ -174,7 +172,7 @@ const AdminDashboard: React.FC = () => {
       const data = await apiRequest('/api/admin/feedback');
       setFeedback(data.data);
     } catch (error) {
-      console.error('Failed to load feedback:', error);
+
     } finally {
       setLoading(false);
     }
@@ -288,7 +286,7 @@ const AdminDashboard: React.FC = () => {
     );
   }
 
-  // Main dashboard
+
   return (
     <div className="min-h-screen bg-subtle">
       {/* Header */}
