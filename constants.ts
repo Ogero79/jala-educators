@@ -3,7 +3,8 @@ import type { NavLink, Value, Program, Testimonial } from './types';
 import { Lightbulb, ShieldCheck, Users, HeartHandshake, Leaf } from 'lucide-react';
 
 // API Configuration - Environment-based URL
-export const API_BASE_URL = 'https://jala-backend-production.up.railway.app'
+//https://jala-backend-production.up.railway.app'
+export const API_BASE_URL = 'http://localhost:5000';
 
 export const NAVIGATION_LINKS: NavLink[] = [
   { label: 'Home', path: '/' },
